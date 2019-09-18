@@ -6,7 +6,7 @@ This buildpack is used for caching and restoring rails assets between heroku bui
 
 There are two tags in this repository, one for caching assets and one for restoring the cache.
 
-Add a buildpack with the `v1-restore-assets` tag before the official `heroku/ruby` buildpack and one with the `v1-save-assets` tag after the ruby buildpack.
+Add a buildpack with the `{current tag version}-restore_rails_assets` tag before the official `heroku/ruby` buildpack and one with the `{current tag version}-save_rails_assets` tag after the ruby buildpack.
 
 ### Things to note
 
