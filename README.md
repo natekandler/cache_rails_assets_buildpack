@@ -8,6 +8,8 @@ There are two tags in this repository, one for caching assets and one for restor
 
 Add a buildpack with the `{current tag version}-restore_rails_assets` tag before the official `heroku/ruby` buildpack and one with the `{current tag version}-save_rails_assets` tag after the ruby buildpack.
 
+To generate a new release use the `rake release` task.
+
 ### Things to note
 
 This buildpack does not handle the cacheing of the `node_modules` directory. This is handled by the official `heroku/nodejs` buildpack.

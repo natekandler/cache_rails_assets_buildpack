@@ -8,7 +8,7 @@ task :release do
 end
 
 def get_previous_version
-  `git tag -l`.scan(/^v(\d+)/).flatten.map(&:to_i).max || 0
+  `git fetch --tags && git tag -l`.scan(/^v(\d+)/).flatten.map(&:to_i).max || 0
 end
 
 def compile_contents(function_name)
