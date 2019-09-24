@@ -4,6 +4,7 @@ function save_assets() {
 
   if [ -d "$save_dir" ]; then
     echo "- caching $save_dir"
+    du -sh "$save_dir"
     mkdir -p "$cache_dir"
     cp -r "$save_dir/." "$cache_dir"
   fi
