@@ -9,13 +9,13 @@ echo "FUNCTION_TO_CALL: started"
 
 function save_rails_assets() {
   for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
-    save_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/tmp/cache/$dir"
+    save_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
   done
 }
 
 function restore_rails_assets() {
   for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
-    restore_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/tmp/cache/$dir"
+    restore_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
   done
 }
 
