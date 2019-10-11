@@ -14,6 +14,9 @@ function save_rails_assets() {
 }
 
 function restore_rails_assets() {
+  echo "*********CACHE_DIR***********"
+  "$CACHE_DIR/rails/cache/$dir"
+  echo "*********CACHE_DIR***********"
   for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
     restore_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
   done
