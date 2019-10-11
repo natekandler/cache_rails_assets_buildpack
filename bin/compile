@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+BUILDPACK_DIR=$(cd "$(dirname "${0:-}")"; cd ..; pwd)
+source "$BUILDPACK_DIR/lib/assets.sh"
+
+echo "save_rails_assets: started"
+
+function save_rails_assets() {
+  for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
+    save_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
+  done
+}
+
+function restore_rails_assets() {
+  # remote: *********CACHE_DIR/rails/cache//assets***********
+  # remote: javascripts
+  # remote: manifest.yml
+  # remote: stylesheets
+  # remote: *********CACHE_DIR/rails/cache//assets***********
+
+  echo "*********CACHE_DIR/rails/cache/$dir/assets***********"
+  ls "$CACHE_DIR/rails/cache/$dir/assets"
+  echo "*********CACHE_DIR/rails/cache/$dir/assets***********"
+
+  echo "*********CACHE_DIR/rails/cache/$dir/assets/stylsheets***********"
+  du -sh "$CACHE_DIR/rails/cache/$dir/assets/stylesheets/*"
+  echo "*********CACHE_DIR/rails/cache/$dir/assets/stylsheets***********"
+
+  echo "*********CACHE_DIR/rails/cache/$dir/assets/javascripts***********"
+  du -sh "$CACHE_DIR/rails/cache/$dir/assets/javascripts/*"
+  echo "*********CACHE_DIR/rails/cache/$dir/assets/javascripts***********"
+  for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
+    restore_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
+  done
+}
+
+save_rails_assets
+
+echo "save_rails_assets: finished"
