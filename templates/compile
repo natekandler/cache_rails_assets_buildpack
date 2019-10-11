@@ -29,7 +29,7 @@ function restore_rails_assets() {
   echo "*********CACHE_DIR/rails/cache/$dir/assets/stylsheets***********"
 
   echo "*********CACHE_DIR/rails/cache/$dir/assets/javascripts***********"
-  du -sh $CACHE_DIR/rails/cache/$dir/assets/javascripts/compiled*
+  du -sh $CACHE_DIR/rails/cache/$dir/assets/javascripts/compiled/*
   echo "*********CACHE_DIR/rails/cache/$dir/assets/javascripts***********"
   for dir in assets javascripts sass sass-preprocessed sprockets-cache templates; do
     restore_assets "$BUILD_DIR/tmp/$dir" "$CACHE_DIR/rails/cache/$dir"
